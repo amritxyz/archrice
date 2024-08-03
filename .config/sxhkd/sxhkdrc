@@ -1,0 +1,29 @@
+# Brightness
+alt + p
+    brightnessctl set 5%+
+alt + l
+    brightnessctl set 5%-
+# audio
+F12
+    amixer -q sset Master 5%+
+F11
+    amixer -q sset Master 5%-
+F10
+    amixer -q sset Master toggle
+super + shift + s
+    pkill -USR1 -x sxhkd
+ctrl + alt + Return
+    st
+#Picom Toggle
+ctrl + alt + p
+    ~/.config/scripts/picom-toggle.sh
+ctrl + alt + o
+    ~/.config/scripts/xset.sh
+shift + alt + l
+    slock
+shift + alt + d
+    systemctl poweroff -i
+shift + alt + r
+    systemctl reboot -i
+super + shift + f
+    scrot 'archlinux-%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)'
