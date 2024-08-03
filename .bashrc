@@ -12,7 +12,7 @@ PS1='[\u@\h \W]\$ '
 # set -o vi
 
 # shortcuts
-alias rr='cd $HOME/.local/src/void-dwm && ls -a'
+alias rr='cd $HOME/.local/src/arch-dwm && ls -a'
 alias h='cd $HOME/ && ls -a'
 alias cf='cd $HOME/.config && ls -a'
 alias wal='cd $HOME/.local/share/wall && ls -a'
