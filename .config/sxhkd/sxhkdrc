@@ -26,4 +26,4 @@ shift + alt + d
 shift + alt + r
     st -e sudo reboot -i
 super + shift + f
-    scrot 'arch-%Y-%m-%d_screenshot.png' -e 'mv $f $$(xdg-user-dir PICTURES)'
+    ~/.config/scripts/scrot.sh
