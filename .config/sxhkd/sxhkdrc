@@ -26,4 +26,4 @@ shift + alt + d
 shift + alt + r
     st -e sudo reboot -i
 super + shift + f
-    scrot 'archlinux-%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)'
+    scrot 'arch-%Y-%m-%d_screenshot.png' -e 'mv $f $$(xdg-user-dir PICTURES)'
