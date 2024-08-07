@@ -21,9 +21,7 @@ ctrl + alt + o
     ~/.config/scripts/xset.sh
 shift + alt + l
     slock
-shift + alt + d
-    st -e sudo poweroff -i
-shift + alt + r
-    st -e sudo reboot -i
+shift + super + d
+    ~/.config/scripts/syslock.sh
 super + shift + f
     ~/.config/scripts/scrot.sh
