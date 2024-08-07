@@ -16,7 +16,7 @@ ctrl + alt + Return
     st
 #Picom Toggle
 ctrl + alt + p
-    ~/.config/scripts/xcompmgr-toggle.sh
+    ~/.config/scripts/picom-toggle.sh
 ctrl + alt + o
     ~/.config/scripts/xset.sh
 shift + alt + l
