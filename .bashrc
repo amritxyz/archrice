@@ -15,7 +15,7 @@ PS1='[\u@\h \W]\$ '
 alias rr='cd $HOME/.local/src/arch-dwm && ls -a'
 alias h='cd $HOME/ && ls -a'
 alias cf='cd $HOME/.config && ls -a'
-alias wal='cd $HOME/.local/share/wall && ls -a'
+#alias wal='cd $HOME/.local/share/wall && ls -a'
 alias mu='cd $HOME/.local/music && ls -a'
 alias dev='cd $HOME/.local/dev && ls -a'
 alias note='cd $HOME//.local/notes && ls -a'
@@ -31,11 +31,10 @@ alias ls='ls'
 alias la='ls -a'
 alias ll='ls -la'
 alias ld='tree'
-alias lt='tree'
-alias ins='sudo xbps-install'
-alias qt='xbps-query -x'
-alias un='sudo xbps-remove -ROfo'
-alias pc='sudo xbps-remove -Oo' # remove unused cache
+alias ins='sudo pacman -S'
+alias qt='pacman -Qt'
+alias un='sudo pacman -Rncsu'
+alias pc='sudo pacman -Scc' # remove unused cache
 
 # youtube download
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "
@@ -45,8 +44,6 @@ alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
 
 # NeoVim
-alias lab='cat $HOME/.local/share/lab'
-alias hub='cat $HOME/.local/share/hub'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
