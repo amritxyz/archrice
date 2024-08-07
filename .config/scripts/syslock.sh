@@ -7,9 +7,7 @@ case "$(readlink -f /sbin/init)" in
 esac
 
 wmpid(){
-	tree="$(pstree -ps $$)"
-	tree="${tree#*$WM(}"
-	echo "${tree%%)*}"
+  pgrep $WM
 }
 
 case "$(printf "🔒 lock\n🚪 leave $WM\n♻ renew $WM\n🐻 hibernate\n🔃 reboot\n💻 shutdown\n💤 sleep\n📺 display off" | dmenu -i -p 'Action: ')" in
