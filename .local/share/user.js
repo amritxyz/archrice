@@ -39,7 +39,7 @@ user_pref("network.predictor.enable-prefetch", false);
 user_pref("layout.css.grid-template-masonry-value.enabled", true);
 user_pref("dom.enable_web_task_scheduling", true);
 user_pref("dom.security.sanitizer.enabled", true);
-//user_pref("browser.privatebrowsing.autostart", true);
+user_pref("browser.privatebrowsing.autostart", true);
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
