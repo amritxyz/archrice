@@ -5,6 +5,19 @@ set icons true
 set scrolloff 10
 set autoquit true
 
+# Custom Functions
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  nvim $ans
+}}
+
 cmd open &{{
 	case $(file --mime-type -Lb $f) in
 		text/*) lf -remote "send $id \$nvim \$fx";;
