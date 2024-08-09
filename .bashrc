@@ -16,11 +16,12 @@ PS1='[\u@\h \W]\$ '
 # set -o vi
 
 # shortcuts
-alias rr='cd $HOME/.local/src/arch-dwm && ls -a'
+alias rr='cd $HOME/.local/src/void-dwm && ls -a'
 alias h='cd $HOME/ && ls -a'
 alias cf='cd $HOME/.config && ls -a'
 alias wal='cd $HOME/.local/share/void-wall && ls -a'
 alias mu='cd $HOME/.local/music && ls -a'
+alias dl='cd $HOME/.local/dl && ls -a'
 alias dev='cd $HOME/.local/dev && ls -a'
 alias img='cd $HOME/.local/img && ls -a'
 alias gitr='cd $HOME/.local/git-repos && ls -a'
@@ -38,10 +39,10 @@ alias ls='ls'
 alias la='ls -a'
 alias ll='ls -la'
 alias ld='tree'
-alias ins='sudo pacman -S'
-alias qt='pacman -Qt'
-alias un='sudo pacman -Rncsu'
-alias pc='sudo pacman -Scc' # remove unused cache
+alias ins='sudo xbps-install'
+alias qt='xbps-query -x'
+alias un='sudo xbps-remove -R'
+alias pc='sudo xbps-remove -Oo' # remove unused cache
 
 # youtube download
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "
