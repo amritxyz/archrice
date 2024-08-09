@@ -15,7 +15,10 @@ user_pref("browser.aboutConfig.showWarning", false);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // STARTUP
 // >>>>>>>>>>>>>>>>>>>>>
-//
+// Search in New tab
+// Disable location bar using search
+user_pref("keyword.enabled", true);
+// -------------------------------------
 // Disable default browser check
 user_pref("browser.compactmode.show", true);
 user_pref("browser.shell.checkDefaultBrowser", false);
@@ -790,9 +793,6 @@ user_pref("extensions.formautofill.creditCards.enabled", false); // [FF56+]
 // -------------------------------------
 // Disable Windows native notifications and use app notications instead [FF111+] [WINDOWS]
 // user_pref("alerts.useSystemBackend.windows.notificationserver.enabled", false);
-// -------------------------------------
-// Disable location bar using search
-user_pref("keyword.enabled", false);
 // -------------------------------------
 // Force GPU sandboxing (Linux, default on Windows)
 user_pref("security.sandbox.gpu.level", 1);
