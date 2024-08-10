@@ -18,7 +18,7 @@ eval "$(dircolors -b)"
 # Shell options and settings
 shopt -s autocd
 stty -ixon
-set -o vi
+#set -o vi
 
 # Aliases
 alias grep='grep --color=auto'
