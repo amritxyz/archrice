@@ -17,7 +17,7 @@ user_pref("browser.aboutConfig.showWarning", false);
 // >>>>>>>>>>>>>>>>>>>>>
 // Search in New tab
 // Disable location bar using search
-user_pref("keyword.enabled", true);
+user_pref("keyword.enabled", false);
 // -------------------------------------
 // Disable default browser check
 user_pref("browser.compactmode.show", true);
