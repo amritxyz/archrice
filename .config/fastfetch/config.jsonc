@@ -1,164 +1,115 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": null,
+    "logo": {
+        "type": "none"
+    },
     "display": {
-        "pipe": true,
-        "key": {
-            "width": 16
-        },
-        "separator": "│ ",
-        "percent": {
-            "type": 6
-        },
-        "bar": {
-            "borderLeft": "",
-            "borderRight": "",
-            "charElapsed": "█",
-            "charTotal": "░",
-            "width": 40
+        "separator": "->   ",
+        "color": {
+            "separator": "1" // Bold
         },
         "constants": [
-            "\u001b[42C"
-        ]
+            "───────────────────────────"
+        ],
+        "key": {
+            "type": "both",
+            "paddingLeft": 4
+        }
     },
     "modules": [
         {
-            "type": "custom",
-            "format": "┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐"
-        },
-        {
-            "type": "custom",
-            "format": "├┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┤"
-        },
-        {
-            "type": "version",
-            "key": " ",
-            "format": "│                   Nyx | Void v{version}                  │"
-        },
-        {
-            "type": "custom",
-            "format": "│                 DEV-404 MACHINE REPORT                │"
-        },
-{
-            "type": "custom",
-            "format": "├────────────┬──────────────────────────────────────────┤"
-        },
-        {
-            "type": "os",
-            "key": "│ OS         │{$1}"
-        },
-        {
-            "type": "kernel",
-            "key": "│ KERNEL     │{$1}"
-        },
-        {
-            "type": "custom",
-            "format": "├────────────┼──────────────────────────────────────────┤"
-        },
-        {
             "type": "title",
-            "key": "│ HOSTNAME   │{$1}",
-            "format": "{host-name}"
+            "format": "                             {user-name-colored}{at-symbol-colored}{host-name-colored}"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "┌{$1} {#1}System Information{#} {$1}┐"
+        },
+        "break",
+        {
+            "key": "OS           ",
+            "keyColor": "red",
+            "type": "os"
         },
         {
+            "key": "Machine      ",
+            "keyColor": "green",
+            "type": "host"
+        },
+        {
+            "key": "Kernel       ",
+            "keyColor": "magenta",
+            "type": "kernel"
+        },
+        {
+            "key": "Uptime       ",
+            "keyColor": "red",
+            "type": "uptime"
+        },
+        {
+            "key": "Resolution   ",
+            "keyColor": "yellow",
+            "type": "display",
+            "compactType": "original-with-refresh-rate"
+        },
+        {
+            "key": "WM           ",
+            "keyColor": "blue",
+            "type": "wm"
+        },
+        {
+            "key": "DE           ",
+            "keyColor": "green",
+            "type": "de"
+        },
+        {
+            "key": "Shell        ",
+            "keyColor": "cyan",
+            "type": "shell"
+        },
+        {
+            "key": "Terminal     ",
+            "keyColor": "red",
+            "type": "terminal"
+        },
+        {
+            "key": "CPU          ",
+            "keyColor": "yellow",
+            "type": "cpu"
+        },
+        {
+            "key": "GPU          ",
+            "keyColor": "blue",
+            "type": "gpu"
+        },
+        {
+            "key": "Memory       ",
+            "keyColor": "magenta",
+            "type": "memory"
+        },
+        {
+            "key": "Local IP     ",
+            "keyColor": "red",
             "type": "localip",
-            "key": "│ CLIENT IP  │{$1}",
-            "format": "{ipv4}"
+            "compact": true
         },
-        {
-            "type": "localip",
-            "key": "│ MAC ADDR   │{$1}",
-            "format": "{mac} ({ifname})",
-            "showIPv4": false,
-            "showMac": true
-        },
-        {
-            "type": "dns",
-            "key": "│ DNS        │{$1}",
-            "showType": "ipv4"
-        },
-        {
-            "type": "title",
-            "key": "│ USER       │{$1}",
-            "format": "{user-name}"
-        },
-{
-            "type": "host",
-            "key": "│ MACHINE    │{$1}",
-            "format": "{name}"
-        },
+//       {
+//           "key": "Public IP    ",
+//           "keyColor": "cyan",
+//           "type": "publicip",
+//           "timeout": 1000
+//       },
+        "break",
         {
             "type": "custom",
-            "format": "├────────────┼──────────────────────────────────────────┤"
+            "format": "└{$1}────────────────────{$1}┘"
         },
+        "break",
         {
-            "type": "cpu",
-            "key": "│ PROCESSOR  │{$1}",
-            "format": "{name}"
-        },
-        {
-            "type": "cpu",
-            "key": "│ CORES      │{$1}",
-            "format": "{cores-physical} PHYSICAL CORES / {cores-logical} THREADS",
-            "showPeCoreCount": false
-        },
-        {
-            "type": "cpu",
-            "key": "│ CPU FREQ   │{$1}",
-            "format": "{freq-max}{/freq-max}{freq-base}{/}"
-        },
-        {
-            "type": "loadavg",
-            "compact": false,
-            // {duration} is not fixed length, hack it
-            "key": "│ LOAD \u001b[s{duration}m\u001b[u\u001b[6C│{$1}"
-        },
-        {
-            "type": "custom",
-            "format": "├────────────┼──────────────────────────────────────────┤"
-        },
-        {
-            "type": "memory",
-            "key": "│ MEMORY     │{$1}",
-            "format": "{used} / {total} [{percentage}]"
-        },
-        {
-            "type": "memory",
-            "key": "│ USAGE      │{$1}",
-            "format": ""
-        },
-{
-            "type": "custom",
-            "format": "├────────────┼──────────────────────────────────────────┤"
-        },
-        {
-            "type": "disk",
-            "key": "│ VOLUME     │{$1}",
-            "format": "{size-used} / {size-total} [{size-percentage}]",
-            "folders": "/"
-        },
-        {
-            "type": "disk",
-            "key": "│ DISK USAGE │{$1}",
-            "format": ""
-        },
-        {
-            "type": "custom",
-            "format": "├────────────┼──────────────────────────────────────────┤"
-        },
-        {
-            "type": "users",
-            "key": "│ LAST LOGIN │{$1}",
-            "format": "{login-time}{?client-ip} ({client-ip})",
-            "myselfOnly": true
-        },
-        {
-            "type": "uptime",
-            "key": "│ UPTIME     │{$1}"
-        },
-        {
-            "type": "custom",
-            "format": "└────────────┴──────────────────────────────────────────┘"
+            "type": "colors",
+            "paddingLeft": 34,
+            "symbol": "circle"
         }
     ]
-  }
+}
