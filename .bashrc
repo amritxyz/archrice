@@ -18,6 +18,7 @@ eval "$(dircolors -b)"
 # Shell options and settings
 shopt -s autocd
 stty -ixon
+HISTSIZE= HISTFILESIZE= # Infinite history.
 #set -o vi
 
 # Aliases
