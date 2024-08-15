@@ -1,115 +1,113 @@
+// Designed for Arch Linux
+// Modified from: https://github.com/fastfetch-cli/fastfetch/pull/1025#issuecomment-2177566138
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "type": "none"
+        "source": "arch",
+        "color": {
+            "1": "red",
+            "2": "yellow"
+        }
     },
     "display": {
-        "separator": "->   ",
         "color": {
-            "separator": "1" // Bold
+            "separator": "blue"
         },
+        "separator": " | ",
         "constants": [
-            "───────────────────────────"
-        ],
-        "key": {
-            "type": "both",
-            "paddingLeft": 4
-        }
+            ">-----------<+>---------------------------------------------<"
+        ]
     },
     "modules": [
         {
-            "type": "title",
-            "format": "                             {user-name-colored}{at-symbol-colored}{host-name-colored}"
+            "type": "kernel",
+            "key": " /\\rch Linux",
+            "keyColor": "magenta"
         },
-        "break",
         {
             "type": "custom",
-            "format": "┌{$1} {#1}System Information{#} {$1}┐"
-        },
-        "break",
-        {
-            "key": "OS           ",
-            "keyColor": "red",
-            "type": "os"
+            "format": "{$1}",
+            "outputColor": "separator"
         },
         {
-            "key": "Machine      ",
-            "keyColor": "green",
-            "type": "host"
+            "type": "uptime",
+            "key": "   Uptime   ",
+            "keyColor": "green"
         },
         {
-            "key": "Kernel       ",
-            "keyColor": "magenta",
-            "type": "kernel"
+            "type": "shell",
+            "key": "   Shell    ",
+            "keyColor": "green"
         },
         {
-            "key": "Uptime       ",
-            "keyColor": "red",
-            "type": "uptime"
+            "type": "terminal",
+            "key": "   Terminal ",
+            "keyColor": "green"
         },
         {
-            "key": "Resolution   ",
-            "keyColor": "yellow",
-            "type": "display",
-            "compactType": "original-with-refresh-rate"
+            "type": "terminalfont",
+            "key": "   Font     ",
+            "keyColor": "green"
         },
         {
-            "key": "WM           ",
-            "keyColor": "blue",
-            "type": "wm"
+            "type": "packages",
+            "key": "   Packages ",
+            "keyColor": "green"
         },
         {
-            "key": "DE           ",
-            "keyColor": "green",
-            "type": "de"
-        },
-        {
-            "key": "Shell        ",
-            "keyColor": "cyan",
-            "type": "shell"
-        },
-        {
-            "key": "Terminal     ",
-            "keyColor": "red",
-            "type": "terminal"
-        },
-        {
-            "key": "CPU          ",
-            "keyColor": "yellow",
-            "type": "cpu"
-        },
-        {
-            "key": "GPU          ",
-            "keyColor": "blue",
-            "type": "gpu"
-        },
-        {
-            "key": "Memory       ",
-            "keyColor": "magenta",
-            "type": "memory"
-        },
-        {
-            "key": "Local IP     ",
-            "keyColor": "red",
             "type": "localip",
-            "compact": true
+            "key": "   Local IP ",
+            "keyColor": "green"
         },
-//       {
-//           "key": "Public IP    ",
-//           "keyColor": "cyan",
-//           "type": "publicip",
-//           "timeout": 1000
-//       },
-        "break",
         {
             "type": "custom",
-            "format": "└{$1}────────────────────{$1}┘"
+            "format": "{$1}",
+            "outputColor": "separator"
+        },
+        {
+            "type": "display",
+            "key": "   Display  ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "cpu",
+            "key": "   CPU      ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "gpu",
+            "key": "   GPU      ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "memory",
+            "key": "   RAM      ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "swap",
+            "key": "   SWAP     ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "disk",
+            "key": "   Disk     ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "battery",
+            "key": "   Battery  ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "{$1}",
+            "outputColor": "separator"
         },
         "break",
         {
             "type": "colors",
-            "paddingLeft": 34,
-            "symbol": "circle"
+            "paddingLeft": 15
         }
     ]
 }
