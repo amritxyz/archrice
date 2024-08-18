@@ -1,4 +1,4 @@
-##!/bin/sh
+#!/bin/sh
 
 ## Scan for devices
 #echo "Scanning for Bluetooth devices..."
