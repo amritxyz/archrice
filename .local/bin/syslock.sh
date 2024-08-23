@@ -22,7 +22,7 @@ case "$(printf "🔒 lock\n🚪 leave $WM\n♻ renew $WM\n🐻 hibernate\n🔃 r
 	'🐻 hibernate') slock $ctl hibernate -i ;;
 	'💤 sleep') slock $ctl suspend -i ;;
 	'🔃 reboot') reboot -i ;;
-	'🖥️shutdown') poweroff -i ;;
+	'🖥️shutdown') shutdown -i ;;
 	'📺 display off') xset dpms force off ;;
 	*) exit 1 ;;
 esac
