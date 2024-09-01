@@ -1,16 +1,5 @@
 #!/bin/bash
-
-# Define the port for the local server
 PORT=8000
-
-# Start the local server in the background
 python3 -m http.server $PORT &
-
-# Wait a moment for the server to start
-#sleep 2
-
-# Define the URL of your local server
 URL="http://localhost:$PORT"
-
-# Open the URL in Firefox
 firefox "$URL" &
