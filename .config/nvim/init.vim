@@ -73,6 +73,15 @@ colorscheme vim
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
 
+" Some extra binds i like
+	nnoremap <C-n> :vsplit <C-r>=expand("%:p:h") . "/"<CR>
+	nnoremap <S-n> :split <C-r>=expand("%:p:h") . "/"<CR>
+	nnoremap <S-h> :vertical resize +5<CR>
+	nnoremap <S-l> :vertical resize -5<CR>
+	nnoremap <S-k> :resize +2<CR>
+	nnoremap <S-j> :resize -2<CR>
+	nnoremap <C-s> :r ~/.config/nvim/snippets/<C-d>
+
 " Replace ex mode with gq
 	map Q gq
 
