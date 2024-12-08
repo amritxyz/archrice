@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the target directory
-TARGET_DIR="$HOME/.local/img"
+TARGET_DIR="$HOME/.local/ss"
 
 # Check if the directory exists
 if [ ! -d "$TARGET_DIR" ]; then
