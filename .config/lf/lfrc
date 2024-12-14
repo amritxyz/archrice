@@ -82,8 +82,10 @@ map <esc> clear
 
 # Movement
 map gc cd ~/.config
-map gn cd ~/.local/notes
+map gb cd ~/.local/bin
+map gn cd ~/.local/dox/notes
 map gd cd ~/.local/dev
 map gi cd ~/.local/img
 map gm cd ~/.local/music
+map gv cd ~/.local/vids
 map gs cd ~/.local/share/
