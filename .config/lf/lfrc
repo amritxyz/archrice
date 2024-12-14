@@ -78,6 +78,7 @@ map <enter> open
 map R reload
 map mf mkfile
 map md mkdir
+map me $chmod +x "$f"
 map <esc> clear
 
 # Movement
