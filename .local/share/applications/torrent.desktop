@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Torrent
-Exec=/usr/bin/env qbittorrent
+Exec=/usr/bin/env transmission-cli %U
