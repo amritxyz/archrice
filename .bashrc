@@ -4,10 +4,17 @@
 [[ $- != *i* ]] && return
 [[ "$(fgconsole 2>/dev/null)" -eq 1 ]] && exec startx > /dev/null 2>&1
 
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="st"
+export TERMINAL_PROG="st"
+export BROWSER="firefox"
+
 # Environment variables
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$HOME/.local/bin"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
 # Prompt configuration
 PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"

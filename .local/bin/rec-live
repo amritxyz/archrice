@@ -1,36 +1,44 @@
 #!/bin/bash
 
-# Define the target directory
+# Target directory
 TARGET_DIR="$HOME/.local/vids"
 
-read -rep "Stream Key: " stream_key
+# YouTube stream key
+echo "Stream Key: "
+read stream_key
+
+# Enable microphone
+echo "Enable microphone (y/n): "
+read enable_mic
 
 # Find the highest number used in existing filenames
 MAX_NUMBER=$(ls -1 "$TARGET_DIR"/*_vid.mkv 2>/dev/null | \
-              awk -F'[_]' '{print $1}' | \
-              awk -F/ '{print $NF}' | \
-              sort -n | \
-              tail -1)
+	awk -F'[_]' '{print $1}' | \
+	awk -F/ '{print $NF}' | \
+	sort -n | \
+	tail -1)
 
 # Check if no files were found
 if [ -z "$MAX_NUMBER" ]; then
-  MAX_NUMBER=0
+	MAX_NUMBER=0
 fi
 
-# Determine the next number
+# Next number
 NEXT_NUMBER=$((MAX_NUMBER + 1))
 
-# Define the filename format
+# Filename format
 FILENAME="$TARGET_DIR/${NEXT_NUMBER}_vid.mkv"
 
-# Take the screenshot and save it with the new filename
-sleep 2 &&
-ffmpeg -y \
-	-f x11grab \
-	-draw_mouse 0 \
-	-s 1366x768 \
-	-i :0.0 \
-	-f alsa -i default \
-	-c:v libx264 -r 30 -c:a flac \
-	-f flv rtmp://a.rtmp.youtube.com/live2/$stream_key
-	-c:v libx264 -r 30 -c:a flac "$FILENAME"
+# Check if microphone is enabled
+if [ "$enable_mic" = "y" ] || [ "$enable_mic" = "Y" ] || [ -z "$enable_mic" ]; then
+	MIC_INPUT="-f alsa -i hw:0,0"  # Default internal microphone device
+else
+	MIC_INPUT=""  # No microphone input
+fi
+
+# Take the screenshot and stream with the selected options
+sleep 2
+ffmpeg -f x11grab -video_size 1366x768 -i :0.0 $MIC_INPUT \
+	-c:v libx264 -preset veryfast \
+	-c:a aac -ar 44100 -b:a 128k -g 50 -f flv \
+	rtmp://a.rtmp.youtube.com/live2/$stream_key

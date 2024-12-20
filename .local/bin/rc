@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [ "$#" -ne 1 ] && echo "Usage: rc <RustSourceFile.rs>" && exit 1
 
