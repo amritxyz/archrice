@@ -90,5 +90,5 @@ map gi cd ~/.local/img
 map gm cd ~/.local/music
 map gv cd ~/.local/vids
 map gs cd ~/.local/share
-map gw cd ~/.local/git-repos
+map gr cd ~/.local/git-repos
 map gw cd ~/.local/share/void-wall
