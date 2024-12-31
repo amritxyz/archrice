@@ -2,7 +2,13 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-[[ "$(fgconsole 2>/dev/null)" -eq 1 ]] && exec startx > /dev/null 2>&1
+
+# Prompt configuration
+PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
+# LS_COLORS configuration
+export LS_COLORS='di=1;34:fi=0:ln=0;36:ex=0;32:'
+eval "$(dircolors -b)"
 
 # Default programs
 export EDITOR="nvim"
@@ -15,51 +21,46 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$HOME/.local/bin"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
-
-# Prompt configuration
-PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-
-# LS_COLORS configuration
-export LS_COLORS='di=1;34:fi=0:ln=0;36:ex=0;32:'
-eval "$(dircolors -b)"
+export PYTHONSTARTUP=$HOME/.config/python/pythonrc
 
 # Shell options and settings
 shopt -s autocd
 stty -ixon
-HISTSIZE= HISTFILESIZE= # Infinite history.
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 
 # Aliases
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
-alias l='ls -l --color=auto'
-alias la='ls -a --color=auto'
-alias ll='ls -la --color=auto'
+alias ls='ls -F --color=auto'
+alias l='ls -lF --color=auto'
+alias la='ls -AF --color=auto'
+alias ll='ls -lAF --color=auto'
 alias c='clear'
 alias t='tmux'
-alias kt='killall tmux'
+alias tk='pkill tmux'
 alias ta='tmux a'
 alias e='exit'
 alias torrent='transmission-cli'
-alias rr='cd $HOME/.local/src/arch-dwm && ls -a'
-alias h='cd $HOME/ && ls -a'
-alias cf='cd $HOME/.config && ls -a'
-alias wal='cd $HOME/.local/share/void-wall && ls -a'
-alias mu='cd $HOME/.local/music && ls -a'
-alias dl='cd $HOME/.local/dl && ls -a'
-alias dox='cd $HOME/.local/dox && ls -a'
-alias dev='cd $HOME/.local/dev && ls -a'
-alias pra='cd $HOME/.local/practice && ls -a'
-alias vid='cd $HOME/.local/vids && ls -a'
-alias img='cd $HOME/.local/img && ls -a'
-alias sss='cd $HOME/.local/ss && ls -a'
-alias nt='cd $HOME/.local/dox/notes && ls -a'
-alias gitr='cd $HOME/.local/git-repos && ls -a'
-alias hs='cd $HOME/.local/hugo-dir && ls -a'
+alias rr='cd $HOME/.local/src/void-dwm && ls -AF'
+alias h='cd $HOME/ && ls -AF'
+alias cf='cd $HOME/.config && ls -AF'
+alias wal='cd $HOME/.local/share/void-wall && ls -AF'
+alias mu='cd $HOME/.local/music && ls -AF'
+alias dl='cd $HOME/.local/dl && ls -AF'
+alias dox='cd $HOME/.local/dox && ls -AF'
+alias dev='cd $HOME/.local/dev && ls -AF'
+alias pra='cd $HOME/.local/practice && ls -AF'
+alias vid='cd $HOME/.local/vids && ls -AF'
+alias img='cd $HOME/.local/img && ls -AF'
+alias sss='cd $HOME/.local/ss && ls -AF'
+alias nt='cd $HOME/.local/dox/notes && ls -AF'
+alias gitr='cd $HOME/.local/git-repos && ls -AF'
+alias hs='cd $HOME/.local/hugo-dir && ls -AF'
 alias hss='hugo server --noHTTPCache'
 alias ff='fastfetch'
 alias pc='sudo pacman -Scc'
-alias ..='cd .. && ls -a'
-alias ...='cd ../../ && ls -a'
+alias ..='cd .. && ls -AF'
+alias ...='cd ../../ && ls -AF'
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "
 alias yta-best="yt-dlp --extract-audio --audio-format best "
 alias yta-flac="yt-dlp --extract-audio --audio-format flac "
@@ -69,6 +70,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias mkdir='mkdir -p'
+alias zzz='sudo zzz'
 
 # Git aliases
 alias g="git"

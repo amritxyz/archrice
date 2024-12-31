@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Define the target directory
 TARGET_DIR="$HOME/.local/ss"
 

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Target directory
 TARGET_DIR="$HOME/.local/vids"
 
