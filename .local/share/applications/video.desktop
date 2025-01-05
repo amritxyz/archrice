@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Video viewer
-Exec=mpv -quiet %f
+Exec=mpv %f
