@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Target directory
 TARGET_DIR="$HOME/.local/vids"
 
@@ -29,8 +29,9 @@ NEXT_NUMBER=$((MAX_NUMBER + 1))
 FILENAME="$TARGET_DIR/${NEXT_NUMBER}_vid.mkv"
 
 # Check if microphone is enabled
+# MIC_INPUT="-f alsa -i hw:0,0 -af 'afftdn=nf=-75'"
 if [ "$enable_mic" = "y" ] || [ "$enable_mic" = "Y" ] || [ -z "$enable_mic" ]; then
-	MIC_INPUT="-f alsa -i hw:0,0"  # Default internal microphone device
+	MIC_INPUT="-f alsa -i default -af 'afftdn=nf=-75'" # Default internal microphone device
 else
 	MIC_INPUT=""  # No microphone input
 fi

@@ -33,7 +33,7 @@ cmd extract ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
 	printf "%s\n\t" "$fx"
-	printf "extract?[y/N]"
+	printf "extract? [y/N] "
 	read ans
 	[ $ans = "y" ] && {
 		case $fx in
@@ -92,3 +92,6 @@ map gv cd ~/.local/vids
 map gs cd ~/.local/share
 map gr cd ~/.local/git-repos
 map gw cd ~/.local/share/void-wall
+map gp cd ~/.local/practice
+map dl cd ~/.local/dl
+map dox cd ~/.local/dox
