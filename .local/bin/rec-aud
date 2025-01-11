@@ -1,6 +1,6 @@
 #!/bin/bash
 # Target directory
-TARGET_DIR="$HOME/.local/music"
+TARGET_DIR="$HOME/.local/audio"
 
 # Check if the directory exists
 if [ ! -d "$TARGET_DIR" ]; then

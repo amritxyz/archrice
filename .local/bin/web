@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 PORT=8000
 PROGRAM="python3 -m http.server"
 # Kill existing Python HTTP server
