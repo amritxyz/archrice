@@ -16,7 +16,8 @@ pdir="$browserdir/$profile"
 # Ensure profile directory exists
 if [ -d "$pdir" ]; then
 	# Custom user.js
-	custom_userjs="/home/$USER/.local/share/1-user.js"
+	custom_userjs="/home/$USER/.local/share/betterfox.js"
+	# custom_userjs="/home/$USER/.local/share/arkenfox.js"
 
     # Check if custom user.js exists
     if [ -f "$custom_userjs" ]; then
@@ -24,7 +25,7 @@ if [ -d "$pdir" ]; then
 	    rm -rf $pdir/* && rm -rf $pdir/.parentlock
 	    cp "$custom_userjs" "$pdir/user.js"
 	    pkill firefox
-	    echo "Custom user.js has been installed to the profile."
+	    echo "'$custom_userjs' has been installed to the profile."
     else
 	    echo "Error: ~/.local/share/user.js not found."
     fi
