@@ -15,6 +15,10 @@
 // ***************************************************************************************
 // Hardware acceleration
 user_pref("layers.acceleration.force-enabled", true);
+user_pref("media.hardware-video-decoding.force-enabled", true);
+user_pref("gfx.webrender.compositor", true);
+user_pref("gfx.webrender.compositor.force-enabled", true);
+user_pref("layers.offmainthreadcomposition.async-animations", false);
 // Set compact density
 user_pref("browser.uidensity", 1); // 0 = default, 1 = compact, 2 = touch
 //
