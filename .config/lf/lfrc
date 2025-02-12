@@ -58,9 +58,6 @@ map c
 map d
 map m
 
-map co $nvim "$f"
-map cf $dotbare fadd -f
-
 map zi extract
 map aa $xwallpaper --stretch "$f"
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 PORT=8000
 PROGRAM="python3 -m http.server"
 # Kill existing Python HTTP server
@@ -11,5 +11,8 @@ URL="http://localhost:$PORT"
 firefox "$URL" &
 # Wait for the firefox process to finish
 wait $!
-# Kill after work done
-pkill -f "$PROGRAM"
+# Check if Firefox is still running
+if ! pgrep -x "firefox" > /dev/null; then
+    # If Firefox is not running, kill the HTTP server
+    pkill -f "$PROGRAM"
+fi
