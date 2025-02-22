@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Define Firefox directory and profile location
 browserdir="/home/void/.mozilla/firefox"
 profilesini="$browserdir/profiles.ini"
