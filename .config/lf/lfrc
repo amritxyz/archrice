@@ -59,15 +59,13 @@ map d
 map m
 
 map zi extract
-map aa $xwallpaper --stretch "$f"
+map a $xwallpaper --stretch "$f"
 
 # Basic Functions
 map . set hidden!
 map dd delete
 
-# map u $trashy restore -r 0
-map dr $trashy restore
-map de $trashy empty --all
+map o $mpv --force-window "$f"
 map p paste
 map x cut
 map y copy
