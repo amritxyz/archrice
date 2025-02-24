@@ -21,7 +21,7 @@ cmd mkfile ${{
 cmd open &{{
 	case $(file --mime-type -Lb $f) in
 		text/*) lf -remote "send $id \$nvim \$fx";;
-		image/*) imv "$f";;
+		image/*) nsxiv "$f";;
 		audio/*|video/*|application/ogg) mpv --force-window "$f";;
 		application/pdf|image/vnd.djvu|application/x-cbr|application/x-cbz|application/x-comic|application/x-comic+zip) zathura "$f";;
 		application/vnd.oasis.opendocument.*|application/vnd.ms-office|application/vnd.openxmlformats-officedocument.*|application/vnd.sun.xml.*) libreoffice "$f";;
@@ -73,7 +73,6 @@ map <enter> open
 map R reload
 map mf mkfile
 map md mkdir
-map du %du -sh "$f"
 map me $chmod +x "$f"
 map <esc> clear
 
@@ -89,7 +88,7 @@ map ga cd ~/.local/audio
 map gv cd ~/.local/vids
 map gs cd ~/.local/share
 map gr cd ~/.local/git-repos
-map gw cd ~/.local/share/wall
+map gw cd ~/.local/share/void-wall
 map gp cd ~/.local/practice
 map gl cd ~/.local/dl
 map gx cd ~/.local/dox
