@@ -24,7 +24,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$HOME/.local/bin"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
-export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+# export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export LIBVA_DRIVER_NAME=iHD
 
 # Shell options and settings
