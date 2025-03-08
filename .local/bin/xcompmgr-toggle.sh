@@ -1,7 +1,7 @@
 #!/bin/sh
-if pgrep -x "xcompmgr" > /dev/null
+if pgrep -x "picom" > /dev/null
 then
-	pkill xcompmgr
+	pkill picom
 else
-	xcompmgr
+	picom
 fi
