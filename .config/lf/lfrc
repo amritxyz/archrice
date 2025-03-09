@@ -64,6 +64,7 @@ map a $xwallpaper --stretch "$f"
 # Basic Functions
 map . set hidden!
 map dd delete
+map du %du -sh "$f"
 
 map o $mpv --force-window "$f"
 map p paste
