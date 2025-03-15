@@ -16,16 +16,18 @@ export TERMINAL="st"
 export TERMINAL_PROG="st"
 export BROWSER="firefox"
 
-# Environment variables
+# Environment variables / User Dirs
 export DISPLAY=:0
 export XDG_SESSION_TYPE=x11
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
+export LIBVA_DRIVER_NAME=iHD
 export PATH="$PATH:$HOME/.local/bin"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
-export XDG_RUNTIME_DIR="/run/user/$(id -u)"
-export LIBVA_DRIVER_NAME=iHD
 
 # Shell options and settings
 shopt -s autocd
