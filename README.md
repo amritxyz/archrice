@@ -6,5 +6,5 @@ sudo pacman -S brightnessctl xwallpaper htop lf xorg-xset alsa-utils ttf-font-aw
 ```
 ## Window Manager
 ```
-git clone https://gitlab.com/amritxyz/arch-dwm
+git clone https://github.com/amritxyz/arch-dwm
 ```
