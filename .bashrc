@@ -77,6 +77,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias mkdir='mkdir -p'
 alias zzz='systemctl suspend'
+alias jx='_JAVA_AWT_WM_NONREPARENTING=1 java'
 
 # Git aliases
 alias g='git'
