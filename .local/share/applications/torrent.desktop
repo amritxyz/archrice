@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Torrent
-Exec=/usr/bin/deluge %U
+Exec=/usr/bin/transmission-gtk %U

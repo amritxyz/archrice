@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Quick fuzzy finder for files and dirs.
+# Opens files in nvim, enters dirs with a shell.
+# Uses fzf or fzf-tmux if inside tmux.
+
+# Check if we're inside tmux session
+if [ -n "$TMUX" ]; then
+	CMD="fzf-tmux --height 40%"
+else
+	CMD="fzf --height 40%"
+fi
+
+# Run fzf and capture the target
+TARGET=$(find . -type f -o -type d 2>/dev/null | sh -c "$CMD") || exit 1
+
+# Check if the selected target is directory or a file
+if [ -d "$TARGET" ]; then
+	# If its a directory cd into that directory
+	cd "$TARGET" || exit 1
+	exec "${SHELL:-/bin/sh}"
+else
+	# If its a file then open it via Neovim.
+	exec nvim "$TARGET"
+fi

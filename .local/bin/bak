@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# This script creates a backup of a specified directory.
+# It first ensures the necessary directories exist:
+# - /opt/void (main directory)
+# - /opt/void/bak (backup directory)
+# The script checks if the source directory exists,
+# creates a time-stamped tar archive of it,
+# and saves the archive in the backup directory.
+# Usage: ./script.sh <directory-name>
+
+MAIN_DIR="/opt/void"
+BAK_DIR="/opt/void/bak"
+
+# Usage check
+if [ -z "$1" ]; then
+    echo "Usage: $0 <directory-name>"
+    exit 1
+fi
+
+# Create some dirs
+if [ ! -d "$MAIN_DIR" ]; then
+	sudo mkdir -p $MAIN_DIR
+	sudo chown $USER:$USER $MAIN_DIR
+fi
+
+if [ ! -d "$BAK_DIR" ]; then
+	sudo mkdir -p $BAK_DIR
+	sudo chown $USER:$USER $BAK_DIR
+fi
+
+# Set variables
+DIR="$1"
+BASENAME=$(basename "$DIR")
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+DEST_DIR="/opt/void/bak"
+ARCHIVE_NAME="${DEST_DIR}/${BASENAME}_${TIMESTAMP}.tar"
+
+# Check if source directory exists
+if [ ! -d "$DIR" ]; then
+    echo "Error: '$DIR' is not a valid directory."
+    exit 1
+fi
+
+# Ensure destination directory exists
+mkdir -p "$DEST_DIR"
+
+# Create uncompressed tar archive
+tar -cf "$ARCHIVE_NAME" "$DIR"
+
+echo ":: Archive created at: $ARCHIVE_NAME"

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+DIR_NUM=0
+while [ -d "${DIR_NUM}-project" ]; do
+	((DIR_NUM++))
+done
+
+DIR_NAME="${DIR_NUM}-project"
+DIR_SRC="${DIR_NAME}/src"
+CLANG_FILE="${DIR_SRC}/main.c"
+HEADER_FILE="${DIR_SRC}/main.h"
+MAKEFILE="${DIR_NAME}/Makefile"
+
+echo "Creating project in $DIR_NAME..."
+
+mkdir -p "$DIR_SRC"
+
+# Create main.c
+cat <<EOF > "$CLANG_FILE"
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "main.h"
+
+int main(int argc, char **argv)
+{
+	return 0;
+}
+EOF
+
+# Create main.h
+cat <<EOF > "$HEADER_FILE"
+#ifndef MAIN_H
+#define MAIN_H
+
+#endif /*MAIN_H*/
+EOF
+
+# Add Makefile
+cat <<EOF > "$MAKEFILE"
+CC = cc
+CFLAGS = -Wall -Wextra -std=c99
+SRC = src/main.c
+OUT = main
+
+all:
+	\$(CC) \$(CFLAGS) \$(SRC) -o \$(OUT)
+
+clean:
+	rm -f \$(OUT)
+EOF
+
+echo "Project ${DIR_NAME} created."

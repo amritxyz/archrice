@@ -1,8 +1,5 @@
-set sandbox none
-set statusbar-h-padding 0
-set statusbar-v-padding 0
-set page-padding 1
-set selection-clipboard clipboard
+# zathurarc
+
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode
@@ -13,6 +10,10 @@ map J zoom out
 map i recolor
 map p print
 map g goto top
+map a adjust_window best-fit
+map B toggle_statusbar
+map M toggle_page_mode
+map C toggle_inputbar
 map [fullscreen] u scroll half-up
 map [fullscreen] d scroll half-down
 map [fullscreen] D toggle_page_mode
@@ -23,3 +24,42 @@ map [fullscreen] J zoom out
 map [fullscreen] i recolor
 map [fullscreen] p print
 map [fullscreen] g goto top
+map [fullscreen] a adjust_window best-fit
+map [fullscreen] B toggle_statusbar
+
+# set sandbox none
+set font "cozette 10"
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+set selection-clipboard clipboard
+set guioptions none
+set statusbar-home-tilde true
+set zoom-step 5
+
+# Gruvbox Material Dark Hard Theme
+set completion-bg "#282828"
+set completion-fg "#d4be98"
+set completion-group-bg "#1d2021"
+set completion-group-fg "#a9b665"
+set completion-highlight-bg "#a9b665"
+set completion-highlight-fg "#1d2021"
+set default-fg "#d4be98"
+set default-bg "#1d2021"
+set inputbar-bg "#1d2021"
+set inputbar-fg "#d79921"
+set notification-bg "#282828"
+set notification-fg "#d4be98"
+set notification-error-bg "#ea6962"
+set notification-error-fg "#1d2021"
+set notification-warning-bg "#e78a4e"
+set notification-warning-fg "#1d2021"
+set statusbar-bg "#282828"
+set statusbar-fg "#d4be98"
+set recolor-keephue
+set recolor-darkcolor "#d4be98"
+set recolor-lightcolor "#1d2021"
+set index-fg "#d4be98"
+set index-bg "#1d2021"
+set index-active-fg "#a9b665"
+set index-active-bg "#282828"

@@ -4,10 +4,13 @@
 [[ $- != *i* ]] && return
 
 # Prompt configuration
-PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+PS1="\n\[\e[38;5;132m\]\w\[\e[0m\] \
+\$(git branch 2>/dev/null | grep \"*\" | sed \"s/*/(\e[38;5;167m&\e[0m)/\") \
+\[\e[38;5;142m\]\$(jobs -p | wc -l | awk '{if (\$1>0) print \"+\"\$1}')\n\
+\[\e[38;5;250m\]$\[\e[0m\] "
 
 # LS_COLORS configuration
-export LS_COLORS='di=1;34:fi=0:ln=0;36:ex=0;32:'
+export LS_COLORS='di=38;5;240:fi=38;5;248:ln=38;5;109:ex=38;5;113:'
 eval "$(dircolors -b)"
 
 # Default programs
@@ -27,7 +30,26 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/gtkrc.mine"
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export JDK_JAVA_OPTIONS="-Djava.util.prefs.userRoot='$XDG_CONFIG_HOME/java' -Dsun.java2d.opengl=true \
+    -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel \
+    -Dswing.aatext=true"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker-machine"
+export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
 
 # Shell options and settings
 shopt -s autocd
@@ -45,7 +67,7 @@ alias c='clear'
 alias t='tmux'
 alias ta='tmux a'
 alias e='exit'
-alias torrent='deluge-gtk'
+alias torrent='transmission-gtk'
 alias rr='cd $HOME/.local/src/arch-dwm && ls -AF'
 alias h='cd $HOME/ && ls -AF'
 alias cf='cd $HOME/.config && ls -AF'
@@ -60,7 +82,9 @@ alias vid='cd $HOME/.local/vids && ls -AF'
 alias img='cd $HOME/.local/img && ls -AF'
 alias sss='cd $HOME/.local/ss && ls -AF'
 alias nt='cd $HOME/.local/dox/notes && ls -AF'
+alias lk='nvim ~/.local/dox/notes/links'
 alias gitr='cd $HOME/.local/git-repos && ls -AF'
+alias tmp='cd /opt/void/ && ls -AF'
 alias hs='cd $HOME/.local/hugo-dir && ls -AF'
 alias hss='hugo server --noHTTPCache'
 alias ff='fastfetch'
@@ -78,6 +102,8 @@ alias vim='nvim'
 alias mkdir='mkdir -p'
 alias zzz='systemctl suspend'
 alias jx='_JAVA_AWT_WM_NONREPARENTING=1 java'
+alias jsql='java -cp .:/opt/mysql-connector-j-9.3.0/mysql-connector-j-9.3.0.jar'
+alias jsqlc='javac -cp .:/opt/mysql-connector-j-9.3.0/mysql-connector-j-9.3.0.jar'
 
 # Git aliases
 alias g='git'
@@ -96,7 +122,7 @@ alias grs='git restore --staged .'
 alias gre='git restore'
 alias gr='git remote'
 alias gcl='git clone'
-alias gt='git ls-tree -r master --name-only'
+alias gt='git ls-tree -r main --name-only'
 alias gb='git branch'
 alias gf='git fetch'
 alias glg='git log --graph --abbrev-commit --decorate --format=format:"%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n%  C(white)%s%C(reset) %C(dim white)- %an%C(reset)" --all'
