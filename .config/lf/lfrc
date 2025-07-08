@@ -66,6 +66,9 @@ map . set hidden!
 map dd delete
 map du %du -sh "$f"
 
+# Backup
+map bak %bak "$f"
+
 map o $mpv --force-window "$f"
 map p paste
 map x cut
@@ -93,3 +96,4 @@ map gw cd ~/.local/share/void-wall
 map gp cd ~/.local/practice
 map gl cd ~/.local/dl
 map gx cd ~/.local/dox
+map gt cd /opt/void/
