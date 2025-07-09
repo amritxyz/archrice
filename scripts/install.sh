@@ -12,14 +12,23 @@ echo
 bash "$SCRIPT_DIR/network-manager.sh"
 
 echo
-log "Starting Modular Installation..."
+ask "Would you like to install some packages. [Y/n] "
+read -r INSTALL
+if [[ $INSTALL == "Y" || $INSTALL == "y" || -z $INSTALL ]]; then
 
-for group in base xorg drivers fonts daemons deps terminal cli media wm apps dev dev_ext bloat tex; do
-	bash "$SCRIPT_DIR/install-group.sh" "$group"
-done
+	echo
+	log "Starting Modular Installation..."
 
-echo
-success "All package groups installed!"
+	for group in base xorg drivers fonts daemons deps terminal cli media wm apps dev dev_ext bloat tex; do
+		bash "$SCRIPT_DIR/install-group.sh" "$group"
+	done
+
+	echo
+	success "All package groups installed!"
+
+else
+	warn "Skipping packages installation."
+fi
 
 echo
 bash "$SCRIPT_DIR/cleanup.sh"

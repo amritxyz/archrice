@@ -14,4 +14,6 @@ if [[ $WIFI == "Y" || $WIFI == "y" || -z $WIFI ]]; then
 	echo -e "Restarting NetworkManager service...\n"
 	sudo systemctl restart NetworkManager
 	sleep 5
+else
+	warn "Skipped wifi powersave."
 fi
