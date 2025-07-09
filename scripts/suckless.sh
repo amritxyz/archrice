@@ -15,7 +15,7 @@ git clone --depth=1 https://github.com/amritxyz/arch-dwm.git/ $HOME/.local/src/a
 sudo make -C $HOME/.local/src/arch-dwm/dwm/ clean install
 sudo make -C $HOME/.local/src/arch-dwm/dmenu/ clean install
 sudo make -C $HOME/.local/src/arch-dwm/st/ clean install
-sudo make -C $HOME/.local/src/arch-dwm/slstatus/ clean install
+sudo make -C $HOME/.local/src/arch-dwm/dwmblocks clean install
 sudo make -C $HOME/.local/src/arch-dwm/slock/ clean install
 
 success "Successfully installed suckless's software."

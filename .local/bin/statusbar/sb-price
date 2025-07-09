@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Usage: price <currency-base currency>
+# Example: price bat-btc
+
+[ -z "$1" ] && exit 1
+
+url="${CRYPTOURL:-rate.sx}"
+target="${1%%-*}"
+denom="${1##*-}"
+symb=""
+
+# Choose symbol
+case "$denom" in
+    "$target"|usd) denom="usd"; symb="$" ;;
+    gbp) symb="£" ;;
+    eur) symb="€" ;;
+    btc) symb="BTC " ;;
+esac
+
+interval="@14d"
+dir="${XDG_CACHE_HOME:-$HOME/.cache}/crypto-prices"
+pricefile="$dir/$target-$denom"
+chartfile="$dir/$target-$denom-chart"
+filestat="$(stat -c %x "$pricefile" 2>/dev/null)"
+
+[ -d "$dir" ] || mkdir -p "$dir"
+
+# Update if file is missing or stale
+[ ! -f "$pricefile" ] || [ "${filestat%% *}" != "$(date '+%Y-%m-%d')" ] && curl -sf \
+    --fail-early "${denom}.${url}/1${target}" "${denom}.${url}/${target}${interval}" \
+    --output "$pricefile" --output "$chartfile" || rm -f "$pricefile" "$chartfile"
+
+# Show price
+[ -f "$pricefile" ] && printf "%s%0.2f\n" "$symb" "$(cat "$pricefile")"

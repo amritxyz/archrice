@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Disk space module
+location=${1:-/}
+
+[ -d "$location" ] || exit
+
+# Optional: middle-click to edit
+[ "$BLOCK_BUTTON" = "6" ] && setsid -f "$TERMINAL" -e "$EDITOR" "$0"
+
+# Output disk usage for given location
+printf "Disk: %s\n" "$(df -h "$location" | awk '/[0-9]/ {print $3 "/" $2}')"

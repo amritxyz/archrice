@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Displays number of upgradeable packages.
+
+# Count upgradable packages (excluding ignored), print only if > 0
+count=$(pacman -Qu | grep -Fcv "[ignored]")
+
+[ "$count" -gt 0 ] && echo "PKG: $count"

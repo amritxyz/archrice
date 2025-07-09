@@ -1,0 +1,30 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) setsid -f "$TERMINAL" -e bmon ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+update() {
+	sum=0
+	for arg; do
+		if [ -r "$arg" ]; then
+			read -r i < "$arg"
+			sum=$(( sum + i ))
+		fi
+	done
+	cache="/tmp/${1##*/}"
+	if [ -f "$cache" ]; then
+		read -r old < "$cache"
+	else
+		old=0
+	fi
+	printf %d\\n "$sum" > "$cache"
+	printf %d\\n $(( sum - old ))
+}
+
+rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
+tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
+
+# printf "RX %6s  TX %6s\n" $(numfmt --to=iec $rx $tx)
+printf "| RX:%4s TX:%4s\n" $(numfmt --to=iec $rx $tx)

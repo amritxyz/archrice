@@ -1,0 +1,24 @@
+#!/bin/sh
+
+wifi="NoWiFi"
+ether="-"
+vpn=""
+
+# Wifi check
+if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ]; then
+	wifi_quality=$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)
+	wifi="WiFi ${wifi_quality}%"
+fi
+
+# Ethernet check
+if [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ]; then
+	ether="ETH"
+fi
+
+# VPN check (tun interface)
+if [ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ]; then
+	vpn="VPN"
+fi
+
+# Print joined by space, ignoring empty vpn
+printf "%s %s%s\n" "| $wifi" "$ether" "${vpn:+ $vpn}"

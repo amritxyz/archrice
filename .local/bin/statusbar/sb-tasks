@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Originally by Andr3as07 <https://github.com/Andr3as07>
+# Some changes by Luke
+# Rebuild by Tenyun
+
+# This block displays the number running background tasks.  Requires tsp.
+
+num=$(tsp -l | awk -v numr=0 -v numq=0 '{if (/running/)numr++; if (/queued/)numq++} END{print numr+numq"("numq")"}')
+
+[ "$num" != "0(0)" ] && echo "Tasks: $num"

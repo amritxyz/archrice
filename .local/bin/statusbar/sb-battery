@@ -1,0 +1,21 @@
+#!/bin/sh
+
+output=""
+
+for battery in /sys/class/power_supply/BAT?*; do
+	[ -n "$output" ] && output="$output | "
+
+	status=$(cat "$battery/status" 2>/dev/null)
+	capacity=$(cat "$battery/capacity" 2>/dev/null)
+
+	case "$status" in
+		Full) status=" " ;;
+		Discharging) status="(-) " ;;
+		Charging) status="(O) " ;;
+		*) status="(?) " ;;
+	esac
+
+	output="${output}${capacity}%$status"
+done
+
+printf "| %s\n" "$output"

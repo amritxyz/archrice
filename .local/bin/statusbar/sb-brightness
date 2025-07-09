@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Get current and max brightness
+curr_brightness=$(cat /sys/class/backlight/*/brightness)
+max_brightness=$(cat /sys/class/backlight/*/max_brightness)
+
+# Calculate brightness percentage
+brightness_per=$((100 * curr_brightness / max_brightness))
+
+# Output without icons
+echo "Brightness ${brightness_per}%"
