@@ -1,8 +1,19 @@
 [user]
 	name = amritxyz
 	email = amrit44404@proton.me
+	# signingkey = A9270035C275E44C
+[core]
+	editor = nvim
+[commit]
+	# gpgSign = true
+[gpg]
+	program = gpg
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main
+[submodule]
+	recurse = true

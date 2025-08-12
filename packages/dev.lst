@@ -1,4 +1,5 @@
 git-lfs
+zls
 rust
 go
 jdk-openjdk
@@ -6,3 +7,8 @@ maven
 nodejs
 npm
 php
+python-pip
+pyright
+deno
+typescript
+svelte-language-server

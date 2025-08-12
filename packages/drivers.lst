@@ -1,3 +1,5 @@
 mesa
 vulkan-intel
 intel-media-driver
+libvpl
+vpl-gpu-rt

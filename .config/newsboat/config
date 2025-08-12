@@ -29,7 +29,7 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article white default bold
 
-browser linkhandler
+browser "firefox --private-window %u &"
 macro , open-in-browser
 macro t set browser "qndl" ; open-in-browser ; set browser linkhandler
 macro a set browser "tsp yt-dlp --embed-metadata -xic -f bestaudio/best --restrict-filenames" ; open-in-browser ; set browser linkhandler
