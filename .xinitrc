@@ -6,5 +6,5 @@ xset s noblank &
 xset r rate 300 50 &
 xcompmgr &
 dunst &
-xwallpaper --stretch $HOME/.local/share/void-wall/dwm.jpg &&
+xwallpaper --stretch $HOME/.local/share/void-wall/img.jpg &&
 exec dwm > /dev/null 2>&1
