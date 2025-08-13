@@ -10,7 +10,7 @@ PS1="\n\[\e[38;5;132m\]\w\[\e[0m\] \
 \[\e[38;5;250m\]$\[\e[0m\] "
 
 # gpg
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA="USE_CURSES=1"
 
 # LS_COLORS configuration
