@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+DIR="$HOME/.config/gnupg"
+CONF="$DIR/gpg-agent.conf"
+
+read -r -p "You want to delete the current gnupg directory [ y/N ] " DLT
+if [[ "$DLT" == "y" || "$DLT" == "Y" ]]; then
+	sudo rm -rf "$DIR"
+else
+	echo "abording..."
+fi
+
+mkdir -p $DIR
+chmod 700 $DIR
+touch $CONF
+
+cat <<EOF >> "$CONF"
+pinentry-program /usr/bin/pinentry-curses
+enable-ssh-support
+
+max-cache-ttl 3600
+default-cache-ttl 3600
+max-cache-ttl-ssh 3600
+default-cache-ttl-ssh 3600
+EOF
+
+gpgconf --kill gpg-agent
+
+if [ $# -eq 1 ]; then
+	gpg --import "$1"
+else
+	echo "Usage: $0 <key-file>"
+	exit 1
+fi
+
+chmod 600 $DIR/*

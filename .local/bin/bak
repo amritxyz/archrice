@@ -7,7 +7,7 @@
 # The script checks if the source directory exists,
 # creates a time-stamped tar archive of it,
 # and saves the archive in the backup directory.
-# Usage: ./script.sh <directory-name>
+# Usage: ./bak <directory-name>
 
 MAIN_DIR="/opt/void"
 BAK_DIR="/opt/void/bak"
