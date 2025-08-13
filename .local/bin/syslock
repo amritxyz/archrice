@@ -5,24 +5,27 @@
 # logging out, or rebooting/shutting down the machine.
 
 # For readable script.
-export WM="river"
-export WL="waylock -init-color 0x1d2021 -input-color 0x7daea3 -fail-color 0xea6962 -ignore-empty-password"
+export WM="dwm"
 export CTL='systemctl'
 
-# Extract choice from selected options shown through fuzzel.
-choice=$(printf "lock\nsleep\nlogout\nreboot\nshutdown" | \
-	fuzzel -p 'Action: ' \
-	-b 1d2021cc -t 766564ff -M e78a4eff -m 928374ff -S ddc7a1ff \
-	-s 282828cc -B 2 -r 0 -C 3c3836ff --input-color e78a4eff \
-	--font monospace:size=12 -I -D no -l 5 --cache=/dev/null --dmenu
-)
+lock(){
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+	kill -44 $(pidof dwmblocks)
+	slock
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+	kill -44 $(pidof dwmblocks)
+}
+
+choice=$(printf "renew\nlock\nsleep\nlogout\nreboot\nshutdown" | \
+	dmenu -i -p 'Action: ')
 
 # Action
 case "$choice" in
-	'lock') $WL ;;
-	'sleep') $CTL suspend && $WL ;;
+	'renew') kill -HUP $(pidof $WM) ;;
+	'lock') lock ;;
+	'sleep') slock $CTL suspend -i ;;
 	"logout") pkill -SIGKILL $WM ;;
-	'reboot') reboot ;;
-	'shutdown') poweroff ;;
+	'reboot') $CTL reboot -i ;;
+	'shutdown') $CTL poweroff -i ;;
 	*) exit 1 ;;
 esac
