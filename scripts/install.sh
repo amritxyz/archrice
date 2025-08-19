@@ -39,9 +39,8 @@ bash "$SCRIPT_DIR/tmp.sh"
 echo
 bash "$SCRIPT_DIR/setup-dotfiles.sh"
 
-# currently not using firefox so
-# echo
-# bash "$SCRIPT_DIR/user-js.sh"
+echo
+bash "$SCRIPT_DIR/user-js.sh"
 
 echo
 bash "$SCRIPT_DIR/services.sh"
