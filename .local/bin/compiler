@@ -25,5 +25,6 @@ case "${ext}" in
     py) python "${file}" ;;
     rs) cargo build ;;
     tex) pdflatex -interaction=nonstopmode "$file" ;;
+    typ) typst compile "$file" ;;
     *) sed -n '/^#!/s/^#!//p; q' "${file}" | xargs -r -I % "${file}" ;;
 esac
