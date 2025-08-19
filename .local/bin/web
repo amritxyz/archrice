@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# This script starts a Python HTTP server on port 8000, opens it in chromium,
-# and stops the server when chromium is closed.
+# This script starts a Python HTTP server on port 8000, opens it in firefox,
+# and stops the server when firefox is closed.
 
 PORT=8000
 PROGRAM="python3 -m http.server"
@@ -15,14 +15,14 @@ python3 -m http.server $PORT &
 # Get the URL to open
 URL="http://localhost:$PORT"
 
-# Open the URL in chromium
-chromium "$URL" &
+# Open the URL in firefox
+firefox "$URL" &
 
-# Wait for the chromium process to finish
+# Wait for the firefox process to finish
 wait $!
 
-# Check if chromium is still running
-if ! pgrep -x "chromium" > /dev/null; then
-	# If chromium is not running, kill the HTTP server
+# Check if firefox is still running
+if ! pgrep -x "firefox" > /dev/null; then
+	# If firefox is not running, kill the HTTP server
 	pkill -f "$PROGRAM"
 fi
