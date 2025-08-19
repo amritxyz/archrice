@@ -6,4 +6,4 @@
 
 [ "$BLOCK_BUTTON" = "6" ] && setsid -f "$TERMINAL" -e "$EDITOR" "$0"
 
-free --mebi | sed -n '2{p;q}' | awk '{printf " RAM %.0f%%\n", ($3 / $2) * 100}'
+free --mebi | sed -n '2{p;q}' | awk '{printf "RAM %.0f%%\n", ($3 / $2) * 100}'
