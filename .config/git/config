@@ -1,6 +1,8 @@
 [user]
 	name = amritxyz
 	email = amrit44404@proton.me
+	# name = susma33
+	# email = susmatandan23@gmail.com
 	# signingkey = A9270035C275E44C
 [core]
 	editor = nvim
