@@ -1,4 +1,5 @@
 base-devel
+bash-completion
 pulsemixer
 brightnessctl
 htop
