@@ -3,7 +3,7 @@
 
 # Prompt configuration
 PS1="\n\[\e[38;5;132m\]\w\[\e[0m\] \
-\$(git branch 2>/dev/null | grep '^*' | sed 's/^* //; s/.*/(\[\e[38;5;167m\]&\[\e[0m\])/') \
+\$(git branch 2>/dev/null | grep '^*' | sed 's/^* //; s/.*/(\[\e[38;2;251;73;52m\]&\[\e[0m\])/') \
 \[\e[38;5;142m\]\$(jobs -p | wc -l | awk '{if (\$1>0) print \"+\"\$1}')\n\
 \[\e[38;5;250m\]$\[\e[0m\] "
 
