@@ -34,5 +34,8 @@ fi
 # Move archrice repo into ~/.local/git-repos
 mv "$RICE_DIR" "$HOME/.local/git-repos/archrice"
 
+export XDG_STATE_HOME="$HOME/.local/state"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+
 echo
 success "Dotfiles and rice successfully set up."

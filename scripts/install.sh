@@ -19,7 +19,7 @@ if [[ $INSTALL == "Y" || $INSTALL == "y" || -z $INSTALL ]]; then
 	echo
 	log "Starting Modular Installation..."
 
-	for group in base xorg drivers fonts daemons deps terminal cli media wm apps dev dev_ext bloat tex; do
+	for group in base xorg drivers fonts daemons deps terminal cli media wm apps build dev dev_ext bloat tex; do
 		bash "$SCRIPT_DIR/install-group.sh" "$group"
 	done
 
@@ -53,6 +53,9 @@ bash "$SCRIPT_DIR/suckless.sh"
 
 echo
 bash "$SCRIPT_DIR/xorg.sh"
+
+echo
+bash "$SCRIPT_DIR/posix.sh"
 
 echo
 bash "$SCRIPT_DIR/clone-repos.sh"

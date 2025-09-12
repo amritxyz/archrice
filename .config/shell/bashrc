@@ -1,11 +1,9 @@
-# ~/.bashrc
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # Prompt configuration
 PS1="\n\[\e[38;5;132m\]\w\[\e[0m\] \
-\$(git branch 2>/dev/null | grep \"*\" | sed \"s/*/(\e[38;5;167m&\e[0m)/\") \
+\$(git branch 2>/dev/null | grep '^*' | sed 's/^* //; s/.*/(\[\e[38;5;167m\]&\[\e[0m\])/') \
 \[\e[38;5;142m\]\$(jobs -p | wc -l | awk '{if (\$1>0) print \"+\"\$1}')\n\
 \[\e[38;5;250m\]$\[\e[0m\] "
 
@@ -16,6 +14,12 @@ export PINENTRY_USER_DATA="USE_CURSES=1"
 # LS_COLORS configuration
 export LS_COLORS='di=38;5;240:fi=38;5;248:ln=38;5;109:ex=38;5;113:'
 eval "$(dircolors -b)"
+
+# Shell options and settings
+shopt -s autocd
+stty -ixon
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 
 # Default programs
 export EDITOR="nvim"
@@ -34,6 +38,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
@@ -56,12 +62,8 @@ export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
 export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
-
-# Shell options and settings
-shopt -s autocd
-stty -ixon
-export HISTSIZE=1000
-export HISTFILESIZE=2000
+export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Aliases
 alias grep='grep --color=auto'
