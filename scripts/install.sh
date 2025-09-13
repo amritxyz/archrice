@@ -19,7 +19,7 @@ if [[ $INSTALL == "Y" || $INSTALL == "y" || -z $INSTALL ]]; then
 	echo
 	log "Starting Modular Installation..."
 
-	for group in base xorg drivers fonts daemons deps terminal cli media wm apps build dev dev_ext bloat tex; do
+	for group in base xorg drivers fonts daemons deps terminal cli media wm apps build dev dev_ext qt bloat tex; do
 		bash "$SCRIPT_DIR/install-group.sh" "$group"
 	done
 
