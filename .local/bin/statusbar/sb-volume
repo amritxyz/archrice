@@ -12,7 +12,7 @@ vol_line=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
 # Check for mute
 if echo "$vol_line" | grep -q '\[MUTED\]'; then
-    echo "VOL 0%"
+    echo "| VOL 0%"
     exit
 fi
 
