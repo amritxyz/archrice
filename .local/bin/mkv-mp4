@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ffmpeg -i $1 -codec copy $2
 stty sane

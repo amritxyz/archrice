@@ -2,37 +2,33 @@
 get_device_list() {
 	bluetoothctl devices | awk -F ' ' '{print $3 " " $2}'
 }
-# Display devices using dmenu and get the selected device name
+
 device_list=$(get_device_list)
 selected_device=$(echo "$device_list" | dmenu -l 10 | awk '{print $1}')
 if [ -z "$selected_device" ]; then
 	notify-send "No device selected."
 	exit 1
 fi
-# Get the MAC address of the selected device
+
+[ -z "$selected_device" ] && notify-send "No device selected." && exit 1
+
 MAC=$(echo "$device_list" | grep "$selected_device" | awk '{print $2}')
-if [ -z "$MAC" ]; then
-	notify-send "Failed to find MAC address for selected device."
+[ -z "$MAC" ] && notify-send "$selected_device..." "Failed to find MAC address." && exit 1
+
+connect=$(bluetoothctl info "$MAC" | grep Connected: | awk '{print $2}')
+
+if [ "$connect" = "no" ]; then
+	action="connect"
+elif [ "$connect" = "yes" ]; then
+	action="disconnect"
+else
+	notify-send "$selected_device" "Unknown status"
 	exit 1
 fi
-# Check the connection status of the selected device
-connect=$(bluetoothctl info "$MAC" | grep Connected: | awk '{print $2}')
-# Attempt to connect or disconnect based on the connection status
-if [ "$connect" = "no" ]; then
-	notify-send "Attempting to connect to $selected_device..."
-	if bluetoothctl connect "$MAC"; then
-		notify-send "Successfully connected to $selected_device"
-	else
-		notify-send "Failed to connect to $selected_device"
-	fi
-elif [ "$connect" = "yes" ]; then
-	notify-send "Attempting to disconnect from $selected_device..."
-	if bluetoothctl disconnect "$MAC"; then
-		notify-send "Successfully disconnected from $selected_device"
-	else
-		notify-send "Failed to disconnect from $selected_device"
-	fi
+
+notify-send "$selected_device" "Attempting to $action..."
+if bluetoothctl "$action" "$MAC"; then
+	notify-send "$selected_device" "Successfully ${action}ed."
 else
-	notify-send "Unable to determine connection status for $selected_device."
-	exit 1
+	notify-send "$selected_device" "Failed to $action."
 fi

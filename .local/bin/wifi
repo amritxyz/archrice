@@ -1,32 +1,23 @@
-#!/bin/bash
-
-# This script checks for required commands (nmcli, fzf), then lists available WiFi networks
-# using `nmcli`, allowing the user to select and connect to a network using `fzf`.
+#!/bin/sh
 
 has() {
-	local verbose=false
-	if [[ $1 == '-v' ]]; then
-		verbose=true
-		shift
-	fi
-	for c in "$@"; do c="${c%% *}"
-		if ! command -v "$c" &> /dev/null; then
-			[[ "$verbose" == true ]] && err "$c not found"
+	verbose=false
+	case "$1" in
+		-v) verbose=true; shift ;;
+	esac
+	for c in "$@"; do
+		c="${c%% *}"
+		if ! command -v "$c" > /dev/null 2>&1; then
+			$verbose && echo "${c} not found" >&2
 			return 1
 		fi
 	done
 }
 
-err() {
-	printf '\e[31m%s\e[0m\n' "$*" >&2
-}
-
-die() {
-	(( $# > 0 )) && err "$*"
+has nmcli fzf || {
+	echo "nmcli or fzf not found" >&2
 	exit 1
 }
-
-has -v nmcli fzf || die
 
 nmcli -f 'bssid,signal,bars,freq,ssid' --color yes device wifi |
 	fzf \

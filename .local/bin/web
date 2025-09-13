@@ -1,28 +1,18 @@
-#!/bin/bash
-
-# This script starts a Python HTTP server on port 8000, opens it in firefox,
-# and stops the server when firefox is closed.
+#!/bin/sh
 
 PORT=8000
 PROGRAM="python3 -m http.server"
 
-# Kill existing Python HTTP server
 pkill -f "$PROGRAM"
 
-# Start a new HTTP server
 python3 -m http.server $PORT &
 
-# Get the URL to open
 URL="http://localhost:$PORT"
 
-# Open the URL in firefox
 firefox "$URL" &
 
-# Wait for the firefox process to finish
 wait $!
 
-# Check if firefox is still running
 if ! pgrep -x "firefox" > /dev/null; then
-	# If firefox is not running, kill the HTTP server
 	pkill -f "$PROGRAM"
 fi

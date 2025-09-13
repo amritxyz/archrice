@@ -1,10 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-# This script presents a menu of actions (lock, sleep, logout, reboot, shutdown) using `fuzzel`.
-# It then executes the selected action, such as locking the screen, suspending the system,
-# logging out, or rebooting/shutting down the machine.
-
-# For readable script.
 export WM="dwm"
 export CTL='systemctl'
 

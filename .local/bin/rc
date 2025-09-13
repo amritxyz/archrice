@@ -1,12 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
-# This script compiles a Rust source file into a binary executable.
-# The script checks if the file exists and then uses `rustc` to compile it.
-# The resulting binary will have the same name as the source file but with a `.out` extension.
+[ "$#" -ne 1 ] && echo "Usage: $0 <file.rs>" >&2 && exit 1
 
-[ "$#" -ne 1 ] && echo "Usage: rc <RustSourceFile.rs>" && exit 1
-input_file="$1"
-output_file="${input_file%.rs}.out"
+i="$1"
+o="${i%.rs}.out"
 
-[ ! -f "$input_file" ] && echo "Error: '$input_file' not found!" && exit 1
-rustc "$input_file" -o "$output_file"
+[ -f "$i" ] || {
+	echo "Error: '$i' not found!" >&2
+	exit 1
+}
+
+rustc "$i" -o "$o" || exit $?

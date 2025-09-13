@@ -1,22 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
-DIR_NUM=0
-while [ -d "${DIR_NUM}-project" ]; do
-	((DIR_NUM++))
+i=000
+while [ -d "${i}-project" ]; do
+	i=$(printf "%03d" $(($i + 1)))
 done
 
-DIR_NAME="${DIR_NUM}-project"
-DIR_SRC="${DIR_NAME}/src"
-CLANG_FILE="${DIR_SRC}/main.c"
-HEADER_FILE="${DIR_SRC}/main.h"
-MAKEFILE="${DIR_NAME}/Makefile"
+n="${i}-project"
+s="$n/src"
 
-echo "Creating project in $DIR_NAME..."
+mkdir -p "$s"
 
-mkdir -p "$DIR_SRC"
-
-# Create main.c
-cat <<EOF > "$CLANG_FILE"
+cat > "$s/main.c" << 'EOF'
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -28,26 +22,31 @@ int main(int argc, char **argv)
 }
 EOF
 
-# Create main.h
-cat <<EOF > "$HEADER_FILE"
+cat > "$s/main.h" << 'EOF'
 #ifndef MAIN_H
 #define MAIN_H
-
-#endif /*MAIN_H*/
+#endif
 EOF
 
-# Add Makefile
-cat <<EOF > "$MAKEFILE"
+cat > "$n/Makefile" << 'EOF'
 CC = cc
 CFLAGS = -Wall -Wextra -std=c99
 SRC = src/main.c
-OUT = main
+OUT = main.o
 
 all:
-	\$(CC) \$(CFLAGS) \$(SRC) -o \$(OUT)
-
+	${CC} ${CFLAGS} ${SRC} -o ${OUT}
+run:
+	./${OUT}
 clean:
-	rm -f \$(OUT)
+	rm -f ${OUT}
 EOF
 
-echo "Project ${DIR_NAME} created."
+cat > "$n/.gitignore" << 'EOF'
+*.o
+*.out
+*.obj
+build/
+EOF
+
+echo "Project $n created."

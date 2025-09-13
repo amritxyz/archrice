@@ -1,0 +1,6 @@
+#!/bin/sh
+
+temp_milli=$(cat /sys/class/hwmon/hwmon5/temp1_input)
+temp_celsius=$((temp_milli / 1000))
+
+echo " $temp_celsius°C"

@@ -1,12 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
-# This script compiles a Go source file into a binary executable.
-# The script will check if the file exists, then it uses `go build` to create
-# a binary with the same name as the source file but with a `.out` extension.
+[ "$#" -ne 1 ] && echo "Usage: $0 <file.go>" >&2 && exit 1
 
-[ "$#" -ne 1 ] && echo "Usage: go <GoSourceFile.go>" && exit 1
-input_file="$1"
-output_file="${input_file%.go}.out"
+i="$1"
+o="${i%.go}.out"
 
-[ ! -f "$input_file" ] && echo "Error: '$input_file' not found!" && exit 1
-go build -o "$output_file" "$input_file"
+[ -f "$i" ] || {
+	echo "Error: '$i' not found!" >&2
+	exit 1
+}
+
+go build -o "$o" "$i" || exit $?
