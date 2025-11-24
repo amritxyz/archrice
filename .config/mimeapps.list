@@ -19,6 +19,7 @@ image/vnd.djvu=img.desktop;
 inode/directory=file.desktop
 text/plain=text.desktop;
 text/x-shellscript=text.desktop;
+audio/mpeg=video.desktop
 video/mp4=video.desktop;
 video/x-matroska=video.desktop;
 x-scheme-handler/lbry=lbry.desktop;
