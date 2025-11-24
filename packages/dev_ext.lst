@@ -1,2 +1,6 @@
 gdb
 valgrind
+openssh
+openssl
+docker
+docker-compose
