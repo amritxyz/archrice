@@ -15,8 +15,7 @@ selected() {
 	files=$(find "$folder" -maxdepth 1 -name "*.md" -type f -printf '%f\n' | \
 		sed 's/\.md$//' | sed 's/_/ /g' | sort -r)
 
-	choices="new
-	$files"
+	choices=$(printf "new\n$files")
 
 	choice=$(printf '%s\n' "$choices" | dmenu -p "Note name: " -l 10)
 
