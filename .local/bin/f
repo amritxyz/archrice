@@ -12,5 +12,5 @@ if [ -d "$TARGET" ]; then
 	cd "$TARGET" || exit 1
 	exec "${SHELL:-/bin/sh}"
 else
-	exec nvim "$TARGET"
+	exec xdg-open "$TARGET"
 fi
