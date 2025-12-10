@@ -7,6 +7,7 @@ source "$SCRIPT_DIR/common.sh"
 log "Configuring xorg..."
 
 sudo mkdir -p /etc/X11/xorg.conf.d/
+sudo cp $HOME/archrice/.local/share/00-keyboard.conf /etc/X11/xorg.conf.d/
 sudo cp $HOME/archrice/.local/share/10-modesetting.conf /etc/X11/xorg.conf.d/
 sudo cp $HOME/archrice/.local/share/40-libinput.conf /etc/X11/xorg.conf.d/
 sudo cp $HOME/archrice/.local/share/hosts /etc/hosts

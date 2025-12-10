@@ -1,0 +1,14 @@
+#!/bin/sh
+
+key="$1"
+
+case "$key" in
+    g)
+        tr '\n' '\0' | xargs -0 gimp
+        ;;
+    y)
+        IFS= read -r img || exit 0
+        xclip -selection clipboard -t image/png -i "$img"
+        notify-send "nsxiv" "Image copied to clipboard: $(basename "$img")"
+        ;;
+esac
