@@ -20,4 +20,12 @@ NEXT_NUMBER=$((MAX_NUMBER + 1))
 
 FILENAME="$TARGET_DIR/${NEXT_NUMBER}_screenshot.png"
 
-scrot -s "$FILENAME"
+scrot -s "$FILENAME" || exit 1
+
+if command -v xclip >/dev/null 2>&1; then
+    xclip -selection clipboard -t image/png -i "$FILENAME"
+fi
+
+if command -v notify-send >/dev/null 2>&1; then
+    notify-send "Screenshot captured" "$(basename "$FILENAME")"
+fi

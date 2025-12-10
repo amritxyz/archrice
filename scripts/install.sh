@@ -52,6 +52,9 @@ echo
 bash "$SCRIPT_DIR/suckless.sh"
 
 echo
+bash "$SCRIPT_DIR/nsxiv.sh"
+
+echo
 bash "$SCRIPT_DIR/xorg.sh"
 
 echo
