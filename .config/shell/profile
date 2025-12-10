@@ -1,4 +1,53 @@
 if [ -f ~/.config/shell/bashrc ]; then
 	. ~/.config/shell/bashrc
 fi
+
+# gpg
+# export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA="USE_CURSES=1"
+
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="st"
+export TERMINAL_PROG="st"
+export BROWSER="firefox"
+
+# Environment variables / User Dirs
+export DISPLAY=:0
+export XDG_SESSION_TYPE=x11
+export LIBVA_DRIVER_NAME=iHD
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin/statusbar"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/gtkrc.mine"
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export JDK_JAVA_OPTIONS="-Djava.util.prefs.userRoot='$XDG_CONFIG_HOME/java' -Dsun.java2d.opengl=true \
+    -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel \
+    -Dswing.aatext=true"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker-machine"
+export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
+export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 [[ "$(fgconsole 2>/dev/null)" -eq 1 ]] && exec startx > /dev/null 2>&1
