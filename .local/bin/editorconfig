@@ -1,0 +1,54 @@
+#!/bin/sh
+
+printf '\033[0;36m'
+printf '%s\n' ":: Creating .editorconfig"
+printf '\033[0m'
+
+cfg() {
+	cat > .editorconfig << 'EOF'
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.c]
+indent_style = tab
+indent_size = tab
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[*.zig]
+indent_style = space
+indent_size = 4
+
+[*.rs]
+indent_style = space
+indent_size = 4
+
+[*.go]
+indent_style = space
+indent_size = 4
+EOF
+}
+
+[ ! -f .editorconfig ] &&
+	cfg ||
+	{
+		printf '\n:: Editor config already exists\n'
+		printf ':: Do you want to override? (y/N): '
+		read -r ans
+		case $ans in
+			[yY]) cfg ;;
+			*) printf ':: Skipping.\n' ;;
+		esac
+	}

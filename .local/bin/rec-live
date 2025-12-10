@@ -31,7 +31,7 @@ else
 fi
 
 sleep 2
-ffmpeg -f x11grab -video_size 1366x768 -i :0.0 $MIC_INPUT \
+ffmpeg -f x11grab -video_size 1920x1200 -i :0.0 $MIC_INPUT \
 	-c:v libx264 -preset veryfast \
 	-c:a aac -ar 44100 -b:a 128k -g 50 -f flv \
 	rtmp://a.rtmp.youtube.com/live2/$stream_key
