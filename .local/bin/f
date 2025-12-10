@@ -11,6 +11,41 @@ TARGET=$(find . -type f -o -type d 2>/dev/null | sh -c "$CMD") || exit 1
 if [ -d "$TARGET" ]; then
 	cd "$TARGET" || exit 1
 	exec "${SHELL:-/bin/sh}"
-else
-	exec xdg-open "$TARGET"
 fi
+
+MIME=$(file --mime-type -b "$TARGET")
+
+case "$MIME" in
+	image/*)
+		exec nsxiv "$TARGET"
+		;;
+
+	video/*|audio/*)
+		exec mpv --force-window "$TARGET"
+		;;
+
+	application/pdf)
+		exec zathura "$TARGET"
+		;;
+
+	image/vnd.djvu|image/x-djvu)
+		exec zathura "$TARGET"
+		;;
+
+	application/vnd.openxmlformats-officedocument.*|\
+	application/vnd.ms-*|\
+	application/msword|\
+	application/vnd.oasis.opendocument.*|\
+	text/csv)
+		exec libreoffice "$TARGET"
+		;;
+
+	application/x-bittorrent)
+		exec qbittorrent "$TARGET"
+		;;
+
+	# Fallback
+	*)
+		exec xdg-open "$TARGET"
+		;;
+esac
