@@ -44,6 +44,14 @@ case "$MIME" in
 		exec qbittorrent "$TARGET"
 		;;
 
+	text/*|\
+	application/json|\
+	application/javascript|\
+	inode/*|\
+	application/*-ini)
+		exec nvim "$TARGET"
+		;;
+
 	# Fallback
 	*)
 		exec xdg-open "$TARGET"
