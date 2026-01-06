@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bgloc="$HOME/.local/share/void-wall/img.jpg"
+xwallpaper --stretch "$bgloc"
