@@ -7,7 +7,7 @@ source "$SCRIPT_DIR/common.sh"
 
 # User.js
 NAME="$HOME/.local/share/arkenfox.js"
-USER_JS="fast.js"
+USER_JS="dwm-fast.js"
 URL="https://codeberg.org/amritxyz/user.js/raw/branch/main/"
 
 log "Getting "$USER_JS"..."
