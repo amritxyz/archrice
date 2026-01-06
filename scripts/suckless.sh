@@ -10,7 +10,7 @@ if [ ! -d ~/.local/src/ ]; then
 	mkdir -p ~/.local/src/
 fi
 
-git clone --depth=1 https://github.com/amritxyz/arch-dwm.git/ $HOME/.local/src/arch-dwm
+git clone --depth=1 https://codeberg.org/amritxyz/arch-dwm.git $HOME/.local/src/arch-dwm
 
 sudo make -C $HOME/.local/src/arch-dwm/dwm/ clean install
 sudo make -C $HOME/.local/src/arch-dwm/dmenu/ clean install

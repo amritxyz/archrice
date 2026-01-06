@@ -7,8 +7,8 @@ source "$SCRIPT_DIR/common.sh"
 
 # User.js
 NAME="$HOME/.local/share/arkenfox.js"
-USER_JS="minimal.js"
-URL="https://raw.githubusercontent.com/amritxyz/user.js/refs/heads/main"
+USER_JS="fast.js"
+URL="https://codeberg.org/amritxyz/user.js/raw/branch/main/"
 
 log "Getting "$USER_JS"..."
 

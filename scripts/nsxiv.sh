@@ -10,7 +10,7 @@ if [ ! -d ~/.local/src/ ]; then
 	mkdir -p ~/.local/src/
 fi
 
-git clone --depth=1 https://github.com/amritxyz/nsxiv.git/ $HOME/.local/src/nsxiv
+git clone --depth=1 https://codeberg.org/amritxyz/nsxiv.git $HOME/.local/src/nsxiv
 
 sudo make -C $HOME/.local/src/nsxiv/ clean install
 
