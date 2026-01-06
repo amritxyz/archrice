@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TARGET_DIR="$HOME/.local/ss"
+TARGET_DIR="$HOME/.local/img/ss"
 
 if [ ! -d "$TARGET_DIR" ]; then
 	mkdir -p "$TARGET_DIR"

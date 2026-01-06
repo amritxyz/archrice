@@ -29,6 +29,7 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export GTK_THEME=Adwaita:dark
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/gtkrc.mine"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
